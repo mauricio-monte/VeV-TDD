@@ -1,7 +1,6 @@
 package tests;
 
 import main.Voo;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -41,7 +40,7 @@ public class VooTeste {
     public void testeReservaVagasPadrao(){
         construir();
 
-        this.voo.removeVagas(5);
+        this.voo.reservaVagas(5);
 
         assertEquals(25, this.voo.getVagasAtuais());
 
@@ -49,9 +48,17 @@ public class VooTeste {
     }
 
     @Test
-    public void testeLiberaVagas(){
+    public void testeReservaVagasAbaixoDoMinimo(){
+        construir();
 
+        try {
+            this.voo.reservaVagas(35);
+            assert(false);
+        } catch (IndexOutOfBoundsException e){
+            assertEquals("Vagas insuficientes.", e.getMessage());
+        }
+
+        destruir();
     }
-
 
 }

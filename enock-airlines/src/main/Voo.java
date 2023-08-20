@@ -2,6 +2,7 @@ package main;
 
 public class Voo {
     public final int VAGAS_INICIAIS = 30;
+    private final int MIN_VAGAS = 0;
 
     private String origem;
     private String destino;
@@ -63,7 +64,13 @@ public class Voo {
         return this.vagasAtuais;
     }
 
-    public void removeVagas(int vagasRemovidas){
-        this.vagasAtuais -= vagasRemovidas;
+    public void reservaVagas(int vagasRemovidas) throws IndexOutOfBoundsException{
+        int vagasAtualizadas = this.vagasAtuais - vagasRemovidas;
+
+        if (vagasAtualizadas < MIN_VAGAS){
+            throw new IndexOutOfBoundsException("Vagas insuficientes.");
+        }
+
+        this.vagasAtuais = vagasAtualizadas;
     }
 }
