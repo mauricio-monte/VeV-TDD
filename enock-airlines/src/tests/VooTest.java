@@ -12,6 +12,17 @@ public class VooTest {
 
     @Test
     public void testVooNulo(){
-        assertEquals(this.voo, null);
+        assertEquals(null, this.voo);
+    }
+
+    @Test
+    public void testAdcVoo(){
+        this.voo = new Voo("Origem A", "Destino A", "20/08/2023", "10:00", 200.0);
+
+        assertEquals("Origem A", this.voo.getOrigem());
+        assertEquals("Destino A", this.voo.getDestino());
+        assertEquals("20/08/2023", this.voo.getData());
+        assertEquals("10:00", this.voo.getHorario());
+        assertEquals(200.0, this.voo.getPreco());
     }
 }
