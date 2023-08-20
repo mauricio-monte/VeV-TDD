@@ -72,7 +72,6 @@ public class VooTeste {
         assertEquals(30, this.voo.getVagasAtuais());
 
         destruir();
-
     }
 
     @Test
@@ -84,8 +83,5 @@ public class VooTeste {
         assertEquals(30, this.voo.getVagasAtuais());
 
         destruir();
-
     }
-
-
 }
