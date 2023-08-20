@@ -1,6 +1,8 @@
 package main;
 
 public class Voo {
+    private final int VAGAS_DISPONIVEIS = 30;
+
     private String origem;
     private String destino;
     private String data;
@@ -53,5 +55,9 @@ public class Voo {
 
     public void setPreco(double preco) {
         this.preco = preco;
+    }
+
+    public int getVagas(){
+        return this.VAGAS_DISPONIVEIS;
     }
 }

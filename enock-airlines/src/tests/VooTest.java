@@ -24,5 +24,8 @@ public class VooTest {
         assertEquals("20/08/2023", this.voo.getData());
         assertEquals("10:00", this.voo.getHorario());
         assertEquals(200.0, this.voo.getPreco());
+        assertEquals(30, this.voo.getVagas());
     }
+
+
 }
