@@ -75,5 +75,17 @@ public class VooTeste {
 
     }
 
+    @Test
+    public void testeLiberaVagasAcimaDoMaximo(){
+        construir();
+
+        this.voo.liberaVagas(5);
+
+        assertEquals(30, this.voo.getVagasAtuais());
+
+        destruir();
+
+    }
+
 
 }

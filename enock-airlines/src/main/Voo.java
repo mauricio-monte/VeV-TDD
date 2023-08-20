@@ -77,6 +77,10 @@ public class Voo {
     public void liberaVagas(int vagasLiberadas) {
         int vagasAtualizadas = this.vagasAtuais + vagasLiberadas;
 
+        if (vagasAtualizadas > this.VAGAS_INICIAIS){
+            vagasAtualizadas = this.VAGAS_INICIAIS;
+        }
+
         this.vagasAtuais = vagasAtualizadas;
     }
 }
