@@ -1,13 +1,14 @@
 package main;
 
 public class Voo {
-    private final int VAGAS_DISPONIVEIS = 30;
+    public final int VAGAS_INICIAIS = 30;
 
     private String origem;
     private String destino;
     private String data;
     private String horario;
     private double preco;
+    private int vagasAtuais;
 
     public Voo(String origem, String destino, String data, String horario, double preco) {
         this.origem = origem;
@@ -15,6 +16,7 @@ public class Voo {
         this.data = data;
         this.horario = horario;
         this.preco = preco;
+        this.vagasAtuais = this.VAGAS_INICIAIS;
     }
 
     public String getOrigem() {
@@ -57,7 +59,11 @@ public class Voo {
         this.preco = preco;
     }
 
-    public int getVagas(){
-        return this.VAGAS_DISPONIVEIS;
+    public int getVagasAtuais(){
+        return this.vagasAtuais;
+    }
+
+    public void removeVagas(int vagasRemovidas){
+        this.vagasAtuais -= vagasRemovidas;
     }
 }
