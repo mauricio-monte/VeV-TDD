@@ -21,5 +21,4 @@ public class PassageiroTest {
         assertTrue(this.passageiro.validaSenha("senha123"));
         assertEquals("4002-8922", this.passageiro.getTel());
     }
-
 }
