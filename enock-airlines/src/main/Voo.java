@@ -4,28 +4,18 @@ public class Voo {
     public final int VAGAS_INICIAIS = 30;
     private final int MIN_VAGAS = 0;
 
-    private String origem;
     private String destino;
     private String data;
     private String horario;
     private double preco;
     private int vagasAtuais;
 
-    public Voo(String origem, String destino, String data, String horario, double preco) {
-        this.origem = origem;
+    public Voo(String destino, String data, String horario, double preco) {
         this.destino = destino;
         this.data = data;
         this.horario = horario;
         this.preco = preco;
         this.vagasAtuais = this.VAGAS_INICIAIS;
-    }
-
-    public String getOrigem() {
-        return origem;
-    }
-
-    public void setOrigem(String origem) {
-        this.origem = origem;
     }
 
     public String getDestino() {

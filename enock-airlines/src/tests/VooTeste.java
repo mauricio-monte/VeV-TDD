@@ -10,7 +10,7 @@ public class VooTeste {
     private Voo voo;
 
     public void construir(){
-        this.voo = new Voo("Origem A", "Destino A", "20/08/2023", "10:00", 200.0);
+        this.voo = new Voo("Destino A", "20/08/2023", "10:00", 200.0);
     }
 
     public void destruir(){
@@ -26,7 +26,6 @@ public class VooTeste {
     public void testeAdcVoo(){
         construir();
 
-        assertEquals("Origem A", this.voo.getOrigem());
         assertEquals("Destino A", this.voo.getDestino());
         assertEquals("20/08/2023", this.voo.getData());
         assertEquals("10:00", this.voo.getHorario());
