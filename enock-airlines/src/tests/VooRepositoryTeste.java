@@ -6,11 +6,13 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VooRepositoryTeste {
-
-    private final String LISTA =
+    private final String LISTA1 =
             "ID: 0 | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
-                    "ID: 1 | Destino: Destino B | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
-                    "ID: 2 | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n";
+            "ID: 1 | Destino: Destino B | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
+            "ID: 2 | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n";
+    private final String LISTA2 =
+            "ID: 0 | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
+            "ID: 3 | Destino: Destino A | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00\n";
 
     private VooRepository vooRepository;
 
@@ -57,8 +59,18 @@ public class VooRepositoryTeste {
     public void testeListarVoos(){
         construirRepositorioCom3Voos();
 
-        assertEquals(LISTA, this.vooRepository.listarVoos());
+        assertEquals(LISTA1, this.vooRepository.listarVoos());
     }
 
+    @Test
+    public void testeFiltrarVoosPorDestino(){
+        construirRepositorioCom3Voos();
+
+        Voo voo1 = new Voo( "Destino A", "20/08/2023", "14:00", 200.0);
+
+        vooRepository.adicionarVoo(voo1);
+
+        assertEquals(LISTA2, vooRepository.getVooPorDestino("Destino A"));
+    }
 
 }
