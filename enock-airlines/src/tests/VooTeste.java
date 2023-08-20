@@ -61,4 +61,19 @@ public class VooTeste {
         destruir();
     }
 
+    @Test
+    public void testeLiberaVagasPadrao(){
+        construir();
+
+        this.voo.reservaVagas(5);
+
+        this.voo.liberaVagas(5);
+
+        assertEquals(30, this.voo.getVagasAtuais());
+
+        destruir();
+
+    }
+
+
 }
