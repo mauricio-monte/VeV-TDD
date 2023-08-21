@@ -116,7 +116,7 @@ public class VooRepositoryTeste {
     }
 
     @Test
-    public void testeFiltrarVoosPorVagas(){
+    public void testeFiltrarVoosPorVagasMinimas(){
         construirReservaVazia();
 
         Voo voo1 = new Voo("Origem A", "Destino A", "20/08/2023", "10:00", 200.0);
@@ -129,6 +129,6 @@ public class VooRepositoryTeste {
 
         this.reserva.reservarVoo(1, 25);
 
-        assertEquals(LISTA5, this.reserva.getVooRepository().getStringVooPorVagas(10));
+        assertEquals(LISTA5, this.reserva.getVooRepository().getStringVooPorVagasMinimas(10));
     }
 }

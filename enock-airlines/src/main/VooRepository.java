@@ -97,4 +97,21 @@ public class VooRepository {
 
         return lista;
     }
+
+    public String getStringVooPorVagasMinimas(int minVagas) {
+        String lista = "";
+
+        for (int i = 0; i < this.voos.size(); i++){
+            Voo voo = this.voos.get(i);
+            if (voo.getVagasAtuais() >= minVagas) {
+                lista += String.format(
+                        "ID: %d | Origem: %s | Destino: %s | Data: %s | Horário: %s | Preço: R$ %.2f | Vagas: %d\n",
+                        i, voo.getOrigem(), voo.getDestino(), voo.getData(), voo.getHorario(), voo.getPreco(),
+                        voo.getVagasAtuais()
+                );
+            }
+        }
+
+        return lista;
+    }
 }
