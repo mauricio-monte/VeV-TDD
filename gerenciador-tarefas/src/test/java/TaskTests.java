@@ -1,9 +1,12 @@
+import org.example.Task;
+import org.example.TaskPriority;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.util.Calendar;
 import java.util.Date;
 
+import static org.example.Task.dateFormat;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 

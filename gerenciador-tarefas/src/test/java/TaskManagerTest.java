@@ -1,9 +1,14 @@
+import org.example.Task;
+import org.example.TaskManager;
+import org.example.TaskPriority;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
+import static org.example.Task.dateFormat;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TaskManagerTest {
@@ -24,7 +29,7 @@ class TaskManagerTest {
         calendar.add(Calendar.DAY_OF_MONTH, 5);
 
         Date currentDatePlusTenDays = calendar.getTime();
-        distantDate = dateFormat.format(currentDatePlusFiveDays);
+        distantDate = dateFormat.format(currentDatePlusTenDays);
     }
     
     @Test
