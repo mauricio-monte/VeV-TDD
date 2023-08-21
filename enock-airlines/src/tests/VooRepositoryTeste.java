@@ -15,7 +15,12 @@ public class VooRepositoryTeste {
             "ID: 3 | Origem: Origem D | Destino: Destino A | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00\n";
     private final String LISTA3 =
             "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
-                    "ID: 3 | Origem: Origem A | Destino: Destino D | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00\n";
+            "ID: 3 | Origem: Origem A | Destino: Destino D | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00\n";
+    private final String LISTA4 =
+            "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
+            "ID: 1 | Origem: Origem B | Destino: Destino B | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
+            "ID: 2 | Origem: Origem C | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
+            "ID: 4 | Origem: Origem A | Destino: Destino E | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n";
 
     private VooRepository vooRepository;
 
@@ -85,6 +90,19 @@ public class VooRepositoryTeste {
         vooRepository.adicionarVoo(voo1);
 
         assertEquals(LISTA3, vooRepository.getVooPorOrigem("Origem A"));
+    }
+
+    @Test
+    public void testeFiltrarVoosPorData(){
+        construirRepositorioCom3Voos();
+
+        Voo voo1 = new Voo( "Origem A", "Destino D", "21/08/2023", "14:00", 200.0);
+        Voo voo2 = new Voo( "Origem A", "Destino E", "20/08/2023", "10:00", 200.0);
+
+        vooRepository.adicionarVoo(voo1);
+        vooRepository.adicionarVoo(voo2);
+
+        assertEquals(LISTA4, vooRepository.getVooPorData("20/08/2023"));
     }
 
 
