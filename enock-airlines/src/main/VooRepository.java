@@ -63,4 +63,20 @@ public class VooRepository {
 
         return lista;
     }
+
+    public String getVooPorData(String data) {
+        String lista = "";
+
+        for (int i = 0; i < this.voos.size(); i++){
+            Voo voo = this.voos.get(i);
+            if (voo.getData().equals(data)) {
+                lista += String.format(
+                        "ID: %d | Origem: %s | Destino: %s | Data: %s | Horário: %s | Preço: R$ %.2f\n",
+                        i, voo.getOrigem(), voo.getDestino(), voo.getData(), voo.getHorario(), voo.getPreco()
+                );
+            }
+        }
+
+        return lista;
+    }
 }
