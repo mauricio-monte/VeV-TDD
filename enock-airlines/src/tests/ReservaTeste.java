@@ -45,7 +45,7 @@ public class ReservaTeste {
     }
 
     @Test
-    public void reservar1VooCom1Passageiro(){
+    public void testeReservar1VooCom1Passageiro(){
         construirReservaCom3Voos();
 
         this.reserva.reservarVoo(0, 1);
@@ -56,4 +56,5 @@ public class ReservaTeste {
 
         assertEquals(29, vooReservado.getVagasAtuais());
     }
+
 }
