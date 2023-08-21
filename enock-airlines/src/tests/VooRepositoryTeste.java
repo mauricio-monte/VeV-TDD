@@ -1,4 +1,5 @@
 package tests;
+import main.Reserva;
 import main.Voo;
 import main.VooRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -21,11 +22,20 @@ public class VooRepositoryTeste {
     "ID: 1 | Origem: Origem B | Destino: Destino B | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
     "ID: 2 | Origem: Origem C | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
     "ID: 4 | Origem: Origem A | Destino: Destino E | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n";
+    private final String LISTA5 =
+    "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
+    "ID: 2 | Origem: Origem C | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n";
+
 
     private VooRepository vooRepository;
+    private Reserva reserva;
 
     public void construirRepositorioVazio() {
         this.vooRepository = new VooRepository();
+    }
+
+    public void construirReservaVazia() {
+        this.reserva = new Reserva();
     }
 
     @AfterEach
@@ -105,15 +115,20 @@ public class VooRepositoryTeste {
         assertEquals(LISTA4, vooRepository.getStringVooPorData("20/08/2023"));
     }
 
-    /*
     @Test
-    public void testeFiltrarVoosPorNumPassageiros(){
-        construirRepositorioCom3Voos();
+    public void testeFiltrarVoosPorVagas(){
+        construirReservaVazia();
 
-        //TODO: a ser implementado
+        Voo voo1 = new Voo("Origem A", "Destino A", "20/08/2023", "10:00", 200.0);
+        Voo voo2 = new Voo("Origem B", "Destino B", "20/08/2023", "10:00", 200.0);
+        Voo voo3 = new Voo("Origem C", "Destino C", "20/08/2023", "10:00", 200.0);
 
-        assert(false);
+        this.reserva.getVooRepository().adicionarVoo(voo1);
+        this.reserva.getVooRepository().adicionarVoo(voo2);
+        this.reserva.getVooRepository().adicionarVoo(voo3);
+
+        this.reserva.reservarVoo(1, 25);
+
+        assertEquals(LISTA5, this.reserva.getVooRepository().getStringVooPorVagas(10));
     }
-    */
-
 }
