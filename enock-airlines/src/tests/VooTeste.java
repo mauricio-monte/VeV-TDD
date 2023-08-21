@@ -85,4 +85,14 @@ public class VooTeste {
 
         destruir();
     }
+
+    @Test
+    public void testeRegistraPassageiroAposReserva(){
+        construir();
+
+        this.voo.reservaVagas(passageiro, 4);
+
+        assertEquals("", this.voo.getPassageirosVagas().get(0));
+        assertEquals(4, this.voo.getPassageirosVagas().get(1));
+    }
 }
