@@ -3,7 +3,6 @@ import org.example.TaskPriority;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
-import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -194,7 +193,7 @@ class TaskTest {
     }
 
     @Test
-    void setTaskExpirationDateIsInvalid() throws ParseException {
+    void setTaskExpirationDateIsInvalid() {
         Task task = new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM);
 
         assertThrows(
