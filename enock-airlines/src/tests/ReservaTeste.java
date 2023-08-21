@@ -1,8 +1,10 @@
-import org.junit.After;
+package tests;
+
+import main.Reserva;
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+
+import static org.junit.Assert.assertNotEquals;
 
 public class ReservaTeste {
 
@@ -15,5 +17,12 @@ public class ReservaTeste {
     @AfterEach
     public void destruir(){
         this.reserva = null;
+    }
+
+    @Test
+    public void testeCriarReservaVazia(){
+        construirReservaVazia();
+
+        assertNotEquals(null, this.reserva);
     }
 }
