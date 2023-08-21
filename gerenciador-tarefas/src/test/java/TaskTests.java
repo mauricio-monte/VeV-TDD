@@ -3,10 +3,11 @@ import org.example.TaskPriority;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
+import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
 
-import static org.example.Task.dateFormat;
+import static org.example.Task.dateFormatter;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertDoesNotThrow;
 
@@ -23,12 +24,12 @@ class TaskTest {
         calendar.add(Calendar.DAY_OF_MONTH, 5);
 
         Date currentDatePlusFiveDays = calendar.getTime();
-        defaultTestDate = dateFormat.format(currentDatePlusFiveDays);
+        defaultTestDate = dateFormatter.format(currentDatePlusFiveDays);
 
         calendar.add(Calendar.DAY_OF_MONTH, -6);
 
         Date yesterday = calendar.getTime();
-        dateThatAlreadyHasPassed = dateFormat.format(yesterday);
+        dateThatAlreadyHasPassed = dateFormatter.format(yesterday);
     }
 
     @Test
@@ -188,25 +189,25 @@ class TaskTest {
     void setTaskExpirationDate() {
         Task task = new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM);
         task.setExpirationDate("");
-        assertEquals("", task.getExpirationDate());
+        assertNull(task.getExpirationDate());
     }
 
     @Test
     void setTaskExpirationDateIsEmpty() {
         Task task = new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM);
         task.setExpirationDate("");
-        assertEquals(null, task.getExpirationDate());
+        assertNull(task.getExpirationDate());
     }
 
     @Test
     void setTaskExpirationDateIsNull() {
         Task task = new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM);
         task.setExpirationDate(null);
-        assertEquals(null, task.getExpirationDate());
+        assertNull(task.getExpirationDate());
     }
 
     @Test
-    void setTaskExpirationDateIsInvalid() {
+    void setTaskExpirationDateIsInvalid() throws ParseException {
         Task task = new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM);
 
         assertThrows(IllegalArgumentException.class,
@@ -228,7 +229,7 @@ class TaskTest {
 
         assertThrows(IllegalArgumentException.class,
                 () -> {
-                    task.setExpirationDate(dateFormat.format(dateThatAlreadyHasPassed));
+                    task.setExpirationDate(dateFormatter.format(dateThatAlreadyHasPassed));
                 }
         );
     }

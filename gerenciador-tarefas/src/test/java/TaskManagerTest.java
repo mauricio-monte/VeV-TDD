@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
-import static org.example.Task.dateFormat;
+import static org.example.Task.dateFormatter;
 import static org.junit.jupiter.api.Assertions.*;
 
 class TaskManagerTest {
@@ -24,12 +24,12 @@ class TaskManagerTest {
         calendar.add(Calendar.DAY_OF_MONTH, 5);
 
         Date currentDatePlusFiveDays = calendar.getTime();
-        defaultTestDate = dateFormat.format(currentDatePlusFiveDays);
+        defaultTestDate = dateFormatter.format(currentDatePlusFiveDays);
 
         calendar.add(Calendar.DAY_OF_MONTH, 5);
 
         Date currentDatePlusTenDays = calendar.getTime();
-        distantDate = dateFormat.format(currentDatePlusTenDays);
+        distantDate = dateFormatter.format(currentDatePlusTenDays);
     }
     
     @Test
@@ -53,13 +53,13 @@ class TaskManagerTest {
     void listTasksByExpirationDateAndPriority() {
         TaskManager taskManager = new TaskManager();
         taskManager.createTask("Task Near Expiration High Priority", "Description", defaultTestDate, TaskPriority.HIGH);
-        taskManager.createTask("Task Distant High Priority", "Description", distantDate, TaskPriority.HIGH);
+        taskManager.createTask("Task Distant Expiration High Priority", "Description", distantDate, TaskPriority.HIGH);
 
         taskManager.createTask("Task Near Expiration Medium Priority", "Description", defaultTestDate, TaskPriority.MEDIUM);
-        taskManager.createTask("Task Distant Medium Priority", "Description", distantDate, TaskPriority.MEDIUM);
+        taskManager.createTask("Task Distant Expiration Medium Priority", "Description", distantDate, TaskPriority.MEDIUM);
 
         taskManager.createTask("Task Near Expiration Low Priority", "Description", defaultTestDate, TaskPriority.LOW);
-        taskManager.createTask("Task Distant Low Priority", "Description", distantDate, TaskPriority.LOW);
+        taskManager.createTask("Task Distant Expiration Low Priority", "Description", distantDate, TaskPriority.LOW);
 
         ArrayList<Task> registeredTasks = taskManager.listTasksByExpirationDateAndPriority();
 
@@ -78,7 +78,7 @@ class TaskManagerTest {
         taskManager.createTask("Task 1", "Description", defaultTestDate, TaskPriority.MEDIUM);
         taskManager.createTask("Task 2", "Description", defaultTestDate, TaskPriority.MEDIUM);
 
-        Task taskId = taskManager.getTasks().get(0).getId();
+        Integer taskId = taskManager.getTasks().get(0).getId();
 
         taskManager.updateTask(taskId, "Updated Title", "Updated Description", distantDate, TaskPriority.LOW);
 
@@ -86,7 +86,7 @@ class TaskManagerTest {
 
         assertEquals("Updated Title", updatedTask.getTitle());
         assertEquals("Updated Description", updatedTask.getDescription());
-        assertEquals(distantDate, updatedTask.getExpirationDate());
+        assertEquals(distantDate, dateFormatter.format(updatedTask.getExpirationDate()));
         assertEquals(TaskPriority.LOW, updatedTask.getPriority());
     }
 
@@ -96,7 +96,7 @@ class TaskManagerTest {
         taskManager.createTask("Título Task 1", "Description", defaultTestDate, TaskPriority.MEDIUM);
         taskManager.createTask("Título Task 2", "Description", defaultTestDate, TaskPriority.MEDIUM);
 
-        Task taskId = taskManager.getTasks().get(0).getId();
+        Integer taskId = taskManager.getTasks().get(0).getId();
 
         taskManager.deleteTask(taskId);
 
