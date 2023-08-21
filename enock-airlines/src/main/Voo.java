@@ -1,5 +1,9 @@
 package main;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class Voo {
     public final int VAGAS_INICIAIS = 30;
     private final int MIN_VAGAS = 0;
@@ -10,6 +14,7 @@ public class Voo {
     private String horario;
     private double preco;
     private int vagasAtuais;
+    private List<Passageiro> passageiros;
 
     public Voo(String origem, String destino, String data, String horario, double preco) {
         this.origem = origem;
@@ -18,6 +23,7 @@ public class Voo {
         this.horario = horario;
         this.preco = preco;
         this.vagasAtuais = this.VAGAS_INICIAIS;
+        this.passageiros = new ArrayList<>();
     }
 
     public String getOrigem() {
@@ -64,7 +70,7 @@ public class Voo {
         return this.vagasAtuais;
     }
 
-    public void reservaVagas(int vagasRemovidas) throws IndexOutOfBoundsException{
+    public void reservaVagas(Passageiro passageiro, int vagasRemovidas) throws IndexOutOfBoundsException{
         int vagasAtualizadas = this.vagasAtuais - vagasRemovidas;
 
         if (vagasAtualizadas < MIN_VAGAS){
@@ -72,6 +78,8 @@ public class Voo {
         }
 
         this.vagasAtuais = vagasAtualizadas;
+
+        this.passageiros.add(passageiro);
     }
 
     public void liberaVagas(int vagasLiberadas) {
@@ -84,4 +92,7 @@ public class Voo {
         this.vagasAtuais = vagasAtualizadas;
     }
 
+    public List<Passageiro> getPassageiros() {
+        return this.passageiros;
+    }
 }

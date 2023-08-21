@@ -48,7 +48,7 @@ public class ReservaTeste {
     public void testeReservar1VooCom1Passageiro(){
         construirReservaCom3Voos();
 
-        this.reserva.reservarVoo(0, 1);
+        this.reserva.reservarVoo(0, 1, null);
 
         VooRepository vooRepository = this.reserva.getVooRepository();
         List<Voo> voos = vooRepository.getVoos();

@@ -1,5 +1,6 @@
 package tests;
 
+import main.Passageiro;
 import main.Voo;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
@@ -41,7 +42,7 @@ public class VooTeste {
     public void testeReservaVagasPadrao(){
         construir();
 
-        this.voo.reservaVagas(5);
+        this.voo.reservaVagas(null, 5);
 
         assertEquals(25, this.voo.getVagasAtuais());
 
@@ -53,7 +54,7 @@ public class VooTeste {
         construir();
 
         try {
-            this.voo.reservaVagas(35);
+            this.voo.reservaVagas(null, 35);
             assert(false);
         } catch (IndexOutOfBoundsException e){
             assertEquals("Vagas insuficientes.", e.getMessage());
@@ -66,7 +67,7 @@ public class VooTeste {
     public void testeLiberaVagasPadrao(){
         construir();
 
-        this.voo.reservaVagas(5);
+        this.voo.reservaVagas(null, 5);
 
         this.voo.liberaVagas(5);
 
@@ -90,9 +91,14 @@ public class VooTeste {
     public void testeRegistraPassageiroAposReserva(){
         construir();
 
+        Passageiro passageiro = new Passageiro("Jão", "jao@mail.com", "senha123", "4002-8922");
+
         this.voo.reservaVagas(passageiro, 4);
 
-        assertEquals("", this.voo.getPassageirosVagas().get(0));
-        assertEquals(4, this.voo.getPassageirosVagas().get(1));
+        assertEquals(26, this.voo.getVagasAtuais());
+        assertEquals("Jão", this.voo.getPassageiros().get(0).getNome());
+        assertEquals("jao@mail.com", this.voo.getPassageiros().get(0).getEmail());
+        assertTrue(this.voo.getPassageiros().get(0).validaSenha("senha123"));
+        assertEquals("4002-8922", this.voo.getPassageiros().get(0).getTel());
     }
 }

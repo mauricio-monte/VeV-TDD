@@ -9,11 +9,11 @@ public class Reserva {
         this.vooRepository = new VooRepository();
     }
 
-    public void reservarVoo(int idVoo, int qtdVagas) {
+    public void reservarVoo(int idVoo, int qtdVagas, Passageiro passageiro) {
         List<Voo> voos = this.vooRepository.getVoos();
         Voo voo = voos.get(idVoo);
 
-        voo.reservaVagas(qtdVagas);
+        voo.reservaVagas(passageiro, qtdVagas);
     }
 
     public VooRepository getVooRepository() {

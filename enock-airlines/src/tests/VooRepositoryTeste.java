@@ -127,7 +127,7 @@ public class VooRepositoryTeste {
         this.reserva.getVooRepository().adicionarVoo(voo2);
         this.reserva.getVooRepository().adicionarVoo(voo3);
 
-        this.reserva.reservarVoo(1, 25);
+        this.reserva.reservarVoo(1, 25, null);
 
         assertEquals(LISTA5, this.reserva.getVooRepository().getStringVooPorVagasMinimas(10));
     }
