@@ -95,4 +95,15 @@ public class Voo {
     public List<Passageiro> getPassageiros() {
         return this.passageiros;
     }
+
+    public Passageiro getPassageiroPorEmail(String email) {
+        for(int i = 0; i < this.passageiros.size(); i++){
+            Passageiro passageiro = this.passageiros.get(i);
+            if (passageiro.getEmail().equals(email)){
+                return passageiro;
+            }
+        }
+
+        throw new IllegalArgumentException("Email não cadastrado.");
+    }
 }

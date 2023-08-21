@@ -20,12 +20,18 @@ public class Reserva {
         return this.vooRepository;
     }
 
-    /*
+
     public void cancelarReserva(int idVoo, int qtdVagas, String email, String senha) {
         Voo voo = this.vooRepository.getVoos().get(idVoo);
 
-        if (voo.getPassageiros().)
+        Passageiro passageiro = voo.getPassageiroPorEmail(email);
+
+        if (!passageiro.validaSenha(senha)){
+            throw new SecurityException("Senha inválida!");
+        }
+
+        voo.liberaVagas(qtdVagas);
     }
-    */
+
 
 }
