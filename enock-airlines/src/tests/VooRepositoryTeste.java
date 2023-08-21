@@ -7,12 +7,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 public class VooRepositoryTeste {
     private final String LISTA1 =
-            "ID: 0 | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
-            "ID: 1 | Destino: Destino B | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
-            "ID: 2 | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n";
+            "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
+            "ID: 1 | Origem: Origem B | Destino: Destino B | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
+            "ID: 2 | Origem: Origem C | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n";
     private final String LISTA2 =
-            "ID: 0 | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
-            "ID: 3 | Destino: Destino A | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00\n";
+            "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
+            "ID: 3 | Origem: Origem D | Destino: Destino A | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00\n";
 
     private VooRepository vooRepository;
 
@@ -28,9 +28,9 @@ public class VooRepositoryTeste {
     public void construirRepositorioCom3Voos(){
         construirRepositorioVazio();
 
-        Voo voo1 = new Voo( "Destino A", "20/08/2023", "10:00", 200.0);
-        Voo voo2 = new Voo( "Destino B", "20/08/2023", "10:00", 200.0);
-        Voo voo3 = new Voo( "Destino C", "20/08/2023", "10:00", 200.0);
+        Voo voo1 = new Voo("Origem A", "Destino A", "20/08/2023", "10:00", 200.0);
+        Voo voo2 = new Voo("Origem B", "Destino B", "20/08/2023", "10:00", 200.0);
+        Voo voo3 = new Voo( "Origem C","Destino C", "20/08/2023", "10:00", 200.0);
 
         this.vooRepository.adicionarVoo(voo1);
         this.vooRepository.adicionarVoo(voo2);
@@ -41,7 +41,7 @@ public class VooRepositoryTeste {
     public void testeAdicionarVoo() {
         construirRepositorioVazio();
 
-        Voo voo = new Voo("Destino A", "20/08/2023", "10:00", 200.0);
+        Voo voo = new Voo("Origem: Origem A", "Destino A", "20/08/2023", "10:00", 200.0);
 
         this.vooRepository.adicionarVoo(voo);
 
@@ -66,11 +66,12 @@ public class VooRepositoryTeste {
     public void testeFiltrarVoosPorDestino(){
         construirRepositorioCom3Voos();
 
-        Voo voo1 = new Voo( "Destino A", "20/08/2023", "14:00", 200.0);
+        Voo voo1 = new Voo( "Origem D", "Destino A", "20/08/2023", "14:00", 200.0);
 
         vooRepository.adicionarVoo(voo1);
 
         assertEquals(LISTA2, vooRepository.getVooPorDestino("Destino A"));
     }
+
 
 }

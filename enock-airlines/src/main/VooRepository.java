@@ -24,8 +24,8 @@ public class VooRepository {
         for (int i = 0; i < this.voos.size(); i++){
             Voo voo = this.voos.get(i);
             lista += String.format(
-                    "ID: %d | Destino: %s | Data: %s | Horário: %s | Preço: R$ %.2f\n",
-                    i, voo.getDestino(), voo.getData(), voo.getHorario(), voo.getPreco()
+                    "ID: %d | Origem: %s | Destino: %s | Data: %s | Horário: %s | Preço: R$ %.2f\n",
+                    i, voo.getOrigem(), voo.getDestino(), voo.getData(), voo.getHorario(), voo.getPreco()
             );
         }
 
@@ -39,8 +39,8 @@ public class VooRepository {
             Voo voo = this.voos.get(i);
             if (voo.getDestino().equals(destino)) {
                 lista += String.format(
-                        "ID: %d | Destino: %s | Data: %s | Horário: %s | Preço: R$ %.2f\n",
-                        i, voo.getDestino(), voo.getData(), voo.getHorario(), voo.getPreco()
+                        "ID: %d | Origem: %s | Destino: %s | Data: %s | Horário: %s | Preço: R$ %.2f\n",
+                        i, voo.getOrigem(), voo.getDestino(), voo.getData(), voo.getHorario(), voo.getPreco()
                 );
             }
         }
