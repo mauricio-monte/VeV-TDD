@@ -32,7 +32,7 @@ public class VooRepository {
         return lista;
     }
 
-    public String getVooPorDestino(String destino) {
+    public String getStringVooPorDestino(String destino) {
         String lista = "";
 
         for (int i = 0; i < this.voos.size(); i++){
@@ -48,7 +48,7 @@ public class VooRepository {
         return lista;
     }
 
-    public String getVooPorOrigem(String origem) {
+    public String getStringVooPorOrigem(String origem) {
         String lista = "";
 
         for (int i = 0; i < this.voos.size(); i++){
@@ -64,7 +64,7 @@ public class VooRepository {
         return lista;
     }
 
-    public String getVooPorData(String data) {
+    public String getStringVooPorData(String data) {
         String lista = "";
 
         for (int i = 0; i < this.voos.size(); i++){
@@ -76,6 +76,20 @@ public class VooRepository {
                 );
             }
         }
+
+        return lista;
+    }
+
+    public String getStringVooPorId(int idVoo) {
+        String lista;
+
+        Voo vooEscolhido = this.voos.get(idVoo);
+
+        lista = String.format(
+                "ID: %d | Origem: %s | Destino: %s | Data: %s | Horário: %s | Preço: R$ %.2f\n",
+                idVoo, vooEscolhido.getOrigem(), vooEscolhido.getDestino(), vooEscolhido.getData(),
+                vooEscolhido.getHorario(), vooEscolhido.getPreco()
+        );
 
         return lista;
     }

@@ -78,7 +78,7 @@ public class VooRepositoryTeste {
 
         vooRepository.adicionarVoo(voo1);
 
-        assertEquals(LISTA2, vooRepository.getVooPorDestino("Destino A"));
+        assertEquals(LISTA2, vooRepository.getStringVooPorDestino("Destino A"));
     }
 
     @Test
@@ -89,7 +89,7 @@ public class VooRepositoryTeste {
 
         vooRepository.adicionarVoo(voo1);
 
-        assertEquals(LISTA3, vooRepository.getVooPorOrigem("Origem A"));
+        assertEquals(LISTA3, vooRepository.getStringVooPorOrigem("Origem A"));
     }
 
     @Test
@@ -102,7 +102,7 @@ public class VooRepositoryTeste {
         vooRepository.adicionarVoo(voo1);
         vooRepository.adicionarVoo(voo2);
 
-        assertEquals(LISTA4, vooRepository.getVooPorData("20/08/2023"));
+        assertEquals(LISTA4, vooRepository.getStringVooPorData("20/08/2023"));
     }
 
     /*

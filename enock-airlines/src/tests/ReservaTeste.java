@@ -6,6 +6,8 @@ import main.VooRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
@@ -15,6 +17,18 @@ public class ReservaTeste {
 
     public void construirReservaVazia() {
         this.reserva = new Reserva();
+    }
+
+    public void construirReservaCom3Voos(){
+        construirReservaVazia();
+
+        Voo voo1 = new Voo("Origem A", "Destino A", "20/08/2023", "10:00", 200.0);
+        Voo voo2 = new Voo("Origem B", "Destino B", "20/08/2023", "10:00", 200.0);
+        Voo voo3 = new Voo("Origem C", "Destino C", "20/08/2023", "10:00", 200.0);
+
+        this.reserva.getVooRepository().adicionarVoo(voo1);
+        this.reserva.getVooRepository().adicionarVoo(voo2);
+        this.reserva.getVooRepository().adicionarVoo(voo3);
     }
 
     @AfterEach
@@ -32,12 +46,14 @@ public class ReservaTeste {
 
     @Test
     public void reservar1VooCom1Passageiro(){
-        construirReservaVazia();
+        construirReservaCom3Voos();
 
         this.reserva.reservarVoo(0, 1);
 
-        VooRepository voos = this.reserva.getVoos();
-        Voo vooReservado = voos.getVooPorId(0);
+        VooRepository vooRepository = this.reserva.getVooRepository();
+        List<Voo> voos = vooRepository.getVoos();
+        Voo vooReservado = voos.get(0);
+
         assertEquals(29, vooReservado.getVagasAtuais());
     }
 }

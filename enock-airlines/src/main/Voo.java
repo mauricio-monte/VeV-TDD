@@ -83,4 +83,5 @@ public class Voo {
 
         this.vagasAtuais = vagasAtualizadas;
     }
+
 }
