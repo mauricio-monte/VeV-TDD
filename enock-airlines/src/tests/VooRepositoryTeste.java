@@ -13,6 +13,9 @@ public class VooRepositoryTeste {
     private final String LISTA2 =
             "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
             "ID: 3 | Origem: Origem D | Destino: Destino A | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00\n";
+    private final String LISTA3 =
+            "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00\n" +
+                    "ID: 3 | Origem: Origem A | Destino: Destino D | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00\n";
 
     private VooRepository vooRepository;
 
@@ -71,6 +74,17 @@ public class VooRepositoryTeste {
         vooRepository.adicionarVoo(voo1);
 
         assertEquals(LISTA2, vooRepository.getVooPorDestino("Destino A"));
+    }
+
+    @Test
+    public void testeFiltrarVoosPorOrigem(){
+        construirRepositorioCom3Voos();
+
+        Voo voo1 = new Voo( "Origem A", "Destino D", "20/08/2023", "14:00", 200.0);
+
+        vooRepository.adicionarVoo(voo1);
+
+        assertEquals(LISTA3, vooRepository.getVooPorOrigem("Origem A"));
     }
 
 
