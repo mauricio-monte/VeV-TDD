@@ -10,7 +10,8 @@ public class VooTeste {
     private Voo voo;
 
     public void construir(){
-        this.voo = new Voo("Origem A","Destino A", "20/08/2023", "10:00", 200.0);
+        this.voo = new Voo("Origem A","Destino A", "20/08/2023",
+                "10:00", 200.0);
     }
 
     public void destruir(){
