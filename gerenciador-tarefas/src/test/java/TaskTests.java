@@ -34,9 +34,7 @@ class TaskTest {
     @Test
     void createTask() {
         assertDoesNotThrow(
-                () -> {
-                    new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM);
-                }
+                () -> new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM)
         );
     }
 
@@ -67,48 +65,39 @@ class TaskTest {
     @Test
     void createTaskDescriptionIsEmpty() {
         assertDoesNotThrow(
-                () ->
-                        new Task("Title", "", defaultTestDate, TaskPriority.MEDIUM)
-
+                () -> new Task("Title", "", defaultTestDate, TaskPriority.MEDIUM)
         );
     }
 
     @Test
     void createTaskExpirationDateIsNull() {
         assertDoesNotThrow(
-                () ->
-                        new Task("Title", "Description", null, TaskPriority.MEDIUM)
-
+                () -> new Task("Title", "Description", null, TaskPriority.MEDIUM)
         );
     }
 
     @Test
     void createTaskExpirationDateIsEmpty() {
         assertDoesNotThrow(
-                () ->
-                        new Task("Title", "Description", "", TaskPriority.MEDIUM)
-
+                () -> new Task("Title", "Description", "", TaskPriority.MEDIUM)
         );
     }
 
     @Test
     void createTaskInvalidExpirationDate() {
         assertThrows(IllegalArgumentException.class,
-                () ->
-                        new Task("Title", "Description", "23/40/2023", TaskPriority.MEDIUM)
+                () -> new Task("Title", "Description", "23/40/2023", TaskPriority.MEDIUM)
         );
 
         assertThrows(IllegalArgumentException.class,
-                () ->
-                        new Task("Title", "Description", "a", TaskPriority.MEDIUM)
+                () -> new Task("Title", "Description", "a", TaskPriority.MEDIUM)
         );
     }
 
     @Test
     void createTaskExpirationDateAlreadyHasPassed() {
         assertThrows(IllegalArgumentException.class,
-                () ->
-                        new Task("Title", "Description", dateThatAlreadyHasPassed, TaskPriority.MEDIUM)
+                () -> new Task("Title", "Description", dateThatAlreadyHasPassed, TaskPriority.MEDIUM)
         );
     }
 
