@@ -36,7 +36,7 @@ class TaskTest {
     void createTask() {
         assertDoesNotThrow(
                 () -> {
-                    Task task = new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM);
+                    new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM);
                 }
         );
     }
@@ -45,9 +45,7 @@ class TaskTest {
     void createTaskTitleIsNull() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    Task task = new Task(null, "Description", defaultTestDate, TaskPriority.MEDIUM);
-                }
+                () -> new Task(null, "Description", defaultTestDate, TaskPriority.MEDIUM)
         );
     }
 
@@ -55,76 +53,71 @@ class TaskTest {
     void createTaskTitleIsEmpty() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    Task task = new Task("", "Description", defaultTestDate, TaskPriority.MEDIUM);
-                }
+                () -> new Task("", "Description", defaultTestDate, TaskPriority.MEDIUM)
         );
     }
 
     @Test
     void createTaskDescriptionIsNull() {
         assertDoesNotThrow(
-                () -> {
-                    Task task = new Task("Title", null, defaultTestDate, TaskPriority.MEDIUM);
-                }
+                () -> new Task("Title", null, defaultTestDate, TaskPriority.MEDIUM)
+
         );
     }
 
     @Test
     void createTaskDescriptionIsEmpty() {
         assertDoesNotThrow(
-                () -> {
-                    Task task = new Task("Title", "", defaultTestDate, TaskPriority.MEDIUM);
-                }
+                () ->
+                        new Task("Title", "", defaultTestDate, TaskPriority.MEDIUM)
+
         );
     }
 
     @Test
     void createTaskExpirationDateIsNull() {
         assertDoesNotThrow(
-                () -> {
-                    Task task = new Task("Title", "Description", null, TaskPriority.MEDIUM);
-                }
+                () ->
+                        new Task("Title", "Description", null, TaskPriority.MEDIUM)
+
         );
     }
 
     @Test
     void createTaskExpirationDateIsEmpty() {
         assertDoesNotThrow(
-                () -> {
-                    Task task = new Task("Title", "Description", "", TaskPriority.MEDIUM);
-                }
+                () ->
+                        new Task("Title", "Description", "", TaskPriority.MEDIUM)
+
         );
     }
 
     @Test
     void createTaskInvalidExpirationDate() {
         assertThrows(IllegalArgumentException.class,
-                () -> {
-                    Task task = new Task("Title", "Description", "23/40/2023", TaskPriority.MEDIUM);
-                });
+                () ->
+                        new Task("Title", "Description", "23/40/2023", TaskPriority.MEDIUM)
+        );
 
         assertThrows(IllegalArgumentException.class,
-                () -> {
-                    Task task = new Task("Title", "Description", "a", TaskPriority.MEDIUM);
-                });
+                () ->
+                        new Task("Title", "Description", "a", TaskPriority.MEDIUM)
+        );
     }
 
     @Test
     void createTaskExpirationDateAlreadyHasPassed() {
         assertThrows(IllegalArgumentException.class,
-                () -> {
-                    Task task = new Task("Title", "Description", dateThatAlreadyHasPassed, TaskPriority.MEDIUM);
-                });
+                () ->
+                        new Task("Title", "Description", dateThatAlreadyHasPassed, TaskPriority.MEDIUM)
+        );
     }
 
     @Test
     void createTaskPriorityIsNull() {
         assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    Task task = new Task("Title", "Description", defaultTestDate, null);
-                }
+                () -> new Task("Title", "Description", defaultTestDate, null)
         );
     }
 
@@ -141,9 +134,7 @@ class TaskTest {
 
         assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    task.setTitle("");
-                }
+                () -> task.setTitle("")
         );
     }
 
@@ -153,9 +144,7 @@ class TaskTest {
 
         assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    task.setTitle(null);
-                }
+                () -> task.setTitle(null)
         );
     }
 
@@ -171,9 +160,7 @@ class TaskTest {
         Task task = new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM);
 
         assertDoesNotThrow(
-                () -> {
-                    task.setDescription("");
-                }
+                () -> task.setDescription("")
         );
         assertEquals("", task.getDescription());
     }
@@ -210,16 +197,14 @@ class TaskTest {
     void setTaskExpirationDateIsInvalid() throws ParseException {
         Task task = new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM);
 
-        assertThrows(IllegalArgumentException.class,
-                () -> {
-                    task.setExpirationDate("23/40/2023");
-                }
-                );
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> task.setExpirationDate("23/40/2023")
+        );
 
-        assertThrows(IllegalArgumentException.class,
-                () -> {
-                    task.setExpirationDate("a");
-                }
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> task.setExpirationDate("a")
         );
     }
 
@@ -227,10 +212,9 @@ class TaskTest {
     void setTaskExpirationDateHasAlreadyPassed() {
         Task task = new Task("Title", "Description", defaultTestDate, TaskPriority.MEDIUM);
 
-        assertThrows(IllegalArgumentException.class,
-                () -> {
-                    task.setExpirationDate(dateFormatter.format(dateThatAlreadyHasPassed));
-                }
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> task.setExpirationDate(dateFormatter.format(dateThatAlreadyHasPassed))
         );
     }
 
@@ -254,9 +238,7 @@ class TaskTest {
 
         assertThrows(
                 IllegalArgumentException.class,
-                () -> {
-                    task.setPriority(null);
-                }
+                () -> task.setPriority(null)
         );
     }
 }
