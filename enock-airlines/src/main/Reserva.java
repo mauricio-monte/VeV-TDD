@@ -19,4 +19,13 @@ public class Reserva {
     public VooRepository getVooRepository() {
         return this.vooRepository;
     }
+
+    /*
+    public void cancelarReserva(int idVoo, int qtdVagas, String email, String senha) {
+        Voo voo = this.vooRepository.getVoos().get(idVoo);
+
+        if (voo.getPassageiros().)
+    }
+    */
+
 }

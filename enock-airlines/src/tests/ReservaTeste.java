@@ -1,5 +1,6 @@
 package tests;
 
+import main.Passageiro;
 import main.Reserva;
 import main.Voo;
 import main.VooRepository;
@@ -48,13 +49,29 @@ public class ReservaTeste {
     public void testeReservar1VooCom1Passageiro(){
         construirReservaCom3Voos();
 
-        this.reserva.reservarVoo(0, 1, null);
+        Passageiro passageiro = new Passageiro("Jão", "jao@mail.com", "senha123", "4002-8922");
+
+        this.reserva.reservarVoo(0, 1, passageiro);
 
         VooRepository vooRepository = this.reserva.getVooRepository();
         List<Voo> voos = vooRepository.getVoos();
         Voo vooReservado = voos.get(0);
 
         assertEquals(29, vooReservado.getVagasAtuais());
+    }
+
+    @Test
+    public void testeCancelarReserva(){
+        construirReservaCom3Voos();
+
+        Passageiro passageiro = new Passageiro("Jão", "jao@mail.com", "senha123", "4002-8922");
+
+        this.reserva.reservarVoo(1, 5, passageiro);
+
+        this.reserva.cancelarReserva(1, 5, "jao@mail.com", "senha123");
+
+        assertEquals(30, this.reserva.getVooRepository().getVoos().get(1).getVagasAtuais());
+
     }
 
 }
