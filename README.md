@@ -3,6 +3,8 @@
 ## enock-airlines
 Diretório contendo a implmentação do exercício "Sistema de Reserva de Voo".
 
+
+=======
 ### Prós da aplicação do TDD:
 - Fui "forçado" a quebrar o problema em problemas menores, o que me impediu de desfocar durante o desenvolvimento.
 - Os testes são um ótimo guia uma vez que são feitos, deixando a implementação muito mais fácil.
@@ -15,6 +17,7 @@ Diretório contendo a implmentação do exercício "Sistema de Reserva de Voo".
 - É necessário pensar simultaneamente nos testes e na implementação em certos momentos.
 - Progresso constante, porém mais lento.
 - Necessidade de refatorar testes e implementação em fases posteriores.
+
 
 ## gerenciador-tarefas
 Diretório contendo a implementação do exercício "Gerenciador de Tarefas".
