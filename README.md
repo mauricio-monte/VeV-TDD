@@ -28,5 +28,6 @@ Diretório contendo a implementação do exercício "Gerenciador de Tarefas".
 ### Contras da aplicação do TDD:
 - Geralmente quando eu vou implementar eu faço em ciclos de planejamento e implementação. Com TDD eu tive que planejar tudo de uma vez, tive que pensar como tudo ia funcionar para poder implementar os testes. Foi um pouco tedioso passar mais tempo no planejamento do que eu estou acostumado.  
 - Além disso, foi um pouco cansativo fazer os testes sem o auto complete da IDE. Como não tinha nada implementado, então todos os testes os testes foram digitados "na mão", não tinha como a IDE me sugerir nada.  
+- Também teve algumas coisas que eu errei nos testes que eu só fui saber depois quando comecei a implementar as classes. É o tipo de detalhe que passa despercebido sem a ajuda da IDE.
 - No geral, achei uma experiência interessante, apesar dos pontos negativos, acredito que estes teriam sido minimizados se eu mudasse um pouco a abordagem que eu adotei.  
 - Eu primeiro implementei os testes de todas as classes e só depois que eu fui implementar o código das classes de fato. Acredito que teria sido melhor ter implementado os testes de uma classe, implementando essa classe e depois partir para os testes de outra classe.  
