@@ -1,4 +1,4 @@
-package tests;
+package tests.TDD;
 import main.Reserva;
 import main.Voo;
 import main.VooRepository;

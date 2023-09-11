@@ -1,4 +1,4 @@
-package tests;
+package tests.TDD;
 import main.Passageiro;
 import org.junit.jupiter.api.Test;
 
