@@ -19,6 +19,7 @@ Diretório contendo a implmentação do exercício "Sistema de Reserva de Voo". 
 
 ## gerenciador-tarefas
 Diretório contendo a implementação do exercício "Gerenciador de Tarefas".
+Os testes funcionais localizados em gerenciador-tarefas/src/test/java/functionalTests.
 
 ### Prós da aplicação do TDD:
 - Depois de terminados os testes, o desenvolvimento foi bem rápido pois os erros indicados pelos testes e pela IDE ajudaram bastante indicando o que o precisava ser feito.  
