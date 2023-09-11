@@ -1,7 +1,7 @@
-# Exercício-TDD
+# Exercício 3 – Testes Funcionais
 
 ## enock-airlines
-Diretório contendo a implmentação do exercício "Sistema de Reserva de Voo".
+Diretório contendo a implmentação do exercício "Sistema de Reserva de Voo". Testes funcionais localizados em enock-airlines/src/tests/functionalTests.
 
 
 =======
