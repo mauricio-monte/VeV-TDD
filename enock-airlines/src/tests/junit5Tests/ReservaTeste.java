@@ -1,15 +1,17 @@
-package tests.functionalTests.avl;
+package tests.junit5Tests;
 
 import main.Passageiro;
 import main.Reserva;
 import main.Voo;
 import main.VooRepository;
+import org.junit.After;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 public class ReservaTeste {
 
@@ -31,7 +33,7 @@ public class ReservaTeste {
         this.reserva.getVooRepository().adicionarVoo(voo3);
     }
 
-    @AfterEach
+    @After
     public void destruir() {
         this.reserva = null;
     }
@@ -180,5 +182,19 @@ public class ReservaTeste {
         assertEquals(30, this.reserva.getVooRepository().getVoos().get(1).getVagasAtuais());
 
 
+    }
+
+    @Test
+    public void CT11CancelarReservaSenhaInvalida() {
+        construirReservaCom3Voos();
+
+        Passageiro passageiro = new Passageiro("Jão", "jao@mail.com", "senha123", "4002-8922");
+        this.reserva.reservarVoo(1, 5, passageiro);
+
+        assertThrows(SecurityException.class, () -> {
+            this.reserva.cancelarReserva(1, 1, "jao@mail.com", "senha_errada");
+        });
+
+        assertEquals(25, this.reserva.getVooRepository().getVoos().get(1).getVagasAtuais());
     }
 }

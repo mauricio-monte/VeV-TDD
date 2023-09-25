@@ -57,7 +57,7 @@ public class ReservaTeste {
     }
 
     @Test
-    public void CT9CancelarVoo() {
+    public void CT2CancelarVoo() {
         construirReservaCom3Voos();
 
         Passageiro passageiro = new Passageiro("Jão", "jao@mail.com", "senha123", "4002-8922");
