@@ -1,4 +1,4 @@
-package tests.functionalTests.avl;
+package junit5Tests;
 
 import main.Passageiro;
 import main.Reserva;
@@ -9,7 +9,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ReservaTeste {
 
@@ -154,7 +155,7 @@ public class ReservaTeste {
     }
 
     @Test
-    public void CT8Liberar29Vagas() {
+    public void CT9Liberar29Vagas() {
         construirReservaCom3Voos();
 
         Passageiro passageiro = new Passageiro("Jão", "jao@mail.com", "senha123", "4002-8922");
@@ -168,7 +169,7 @@ public class ReservaTeste {
     }
 
     @Test
-    public void CT8Liberar30Vagas() {
+    public void CT10Liberar30Vagas() {
         construirReservaCom3Voos();
 
         Passageiro passageiro = new Passageiro("Jão", "jao@mail.com", "senha123", "4002-8922");
@@ -180,5 +181,19 @@ public class ReservaTeste {
         assertEquals(30, this.reserva.getVooRepository().getVoos().get(1).getVagasAtuais());
 
 
+    }
+
+    @Test
+    public void CT11CancelarReservaSenhaInvalida() {
+        construirReservaCom3Voos();
+
+        Passageiro passageiro = new Passageiro("Jão", "jao@mail.com", "senha123", "4002-8922");
+        this.reserva.reservarVoo(1, 5, passageiro);
+
+        assertThrows(SecurityException.class, () -> {
+            this.reserva.cancelarReserva(1, 1, "jao@mail.com", "senha_errada");
+        });
+
+        assertEquals(25, this.reserva.getVooRepository().getVoos().get(1).getVagasAtuais());
     }
 }

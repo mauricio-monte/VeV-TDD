@@ -1,4 +1,4 @@
-package tests.TDD;
+package TDD;
 
 import main.Passageiro;
 import main.Voo;

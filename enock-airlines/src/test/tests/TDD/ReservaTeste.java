@@ -1,4 +1,4 @@
-package tests.functionalTests.pe;
+package TDD;
 
 import main.Passageiro;
 import main.Reserva;
@@ -9,21 +9,18 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class ReservaTeste {
 
     private Reserva reserva;
-    private final String CONFIRMACAO =
-    "RESERVA CONFIRMADA\n" +
-    "Origem: B | Destino: B | Data: 20/08/2023 | Horário: 10:00 | Preço: R$200,00\n" +
-    "Cliente: Jão | Email: jao@mail.com | Telefone: 4002-8922";
 
     public void construirReservaVazia() {
         this.reserva = new Reserva();
     }
 
-    public void construirReservaCom3Voos() {
+    public void construirReservaCom3Voos(){
         construirReservaVazia();
 
         Voo voo1 = new Voo("Origem A", "Destino A", "20/08/2023", "10:00", 200.0);
@@ -36,37 +33,45 @@ public class ReservaTeste {
     }
 
     @AfterEach
-    public void destruir() {
+    public void destruir(){
         this.reserva = null;
     }
 
     @Test
-    public void CT1ReservarVoo() {
+    public void testeCriarReservaVazia(){
+        construirReservaVazia();
+
+        assertNotEquals(null, this.reserva);
+        assertNotEquals(null, this.reserva.getVooRepository());
+    }
+
+    @Test
+    public void testeReservar1VooCom1Passageiro(){
         construirReservaCom3Voos();
 
         Passageiro passageiro = new Passageiro("Jão", "jao@mail.com", "senha123", "4002-8922");
 
-        String retorno = this.reserva.reservarVoo(0, 1, passageiro);
+        this.reserva.reservarVoo(0, 1, passageiro);
 
         VooRepository vooRepository = this.reserva.getVooRepository();
         List<Voo> voos = vooRepository.getVoos();
         Voo vooReservado = voos.get(0);
 
         assertEquals(29, vooReservado.getVagasAtuais());
-        assertEquals(CONFIRMACAO, retorno);
     }
 
     @Test
-    public void CT9CancelarVoo() {
+    public void testeCancelarReserva(){
         construirReservaCom3Voos();
 
         Passageiro passageiro = new Passageiro("Jão", "jao@mail.com", "senha123", "4002-8922");
 
         this.reserva.reservarVoo(1, 5, passageiro);
 
-        this.reserva.cancelarReserva(1, 1, "jao@mail.com", "senha123");
+        this.reserva.cancelarReserva(1, 5, "jao@mail.com", "senha123");
 
-        assertEquals(26, this.reserva.getVooRepository().getVoos().get(1).getVagasAtuais());
+        assertEquals(30, this.reserva.getVooRepository().getVoos().get(1).getVagasAtuais());
 
     }
+
 }
