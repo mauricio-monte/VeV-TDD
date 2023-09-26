@@ -1,17 +1,16 @@
-package tests.junit5Tests;
+package junit5Tests;
 
 import main.Passageiro;
 import main.Reserva;
 import main.Voo;
 import main.VooRepository;
-import org.junit.After;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ReservaTeste {
 
@@ -33,7 +32,7 @@ public class ReservaTeste {
         this.reserva.getVooRepository().adicionarVoo(voo3);
     }
 
-    @After
+    @AfterEach
     public void destruir() {
         this.reserva = null;
     }

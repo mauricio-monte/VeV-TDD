@@ -1,4 +1,4 @@
-package tests.functionalTests.pe;
+package functionalTests.pe;
 
 import main.Reserva;
 import main.Voo;

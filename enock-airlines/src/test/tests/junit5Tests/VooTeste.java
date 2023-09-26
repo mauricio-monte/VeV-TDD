@@ -1,8 +1,8 @@
-package tests.junit5Tests;
+package junit5Tests;
 
 import main.Passageiro;
 import main.Voo;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -11,7 +11,7 @@ public class VooTeste {
 
     private Voo voo;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         this.voo = new Voo("Origem A", "Destino A", "20/08/2023", "10:00", 200.0);
     }

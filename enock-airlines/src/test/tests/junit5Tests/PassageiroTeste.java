@@ -1,14 +1,14 @@
-package tests.junit5Tests;
+package junit5Tests;
 
 import main.Passageiro;
-import org.junit.Before;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class PassageiroTeste {
     private Passageiro passageiro;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         this.passageiro = new Passageiro("Jão", "jao@mail.com", "senha123", "4002-8922");
     }

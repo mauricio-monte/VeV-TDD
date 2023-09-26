@@ -1,29 +1,30 @@
+package TDD;
 import main.Reserva;
 import main.Voo;
 import main.VooRepository;
-import org.junit.After;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class VooRepositoryTeste {
     private final String LISTA1 =
-            "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
-                    "ID: 1 | Origem: Origem B | Destino: Destino B | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
-                    "ID: 2 | Origem: Origem C | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n";
+    "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
+    "ID: 1 | Origem: Origem B | Destino: Destino B | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
+    "ID: 2 | Origem: Origem C | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n";
     private final String LISTA2 =
-            "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
-                    "ID: 3 | Origem: Origem D | Destino: Destino A | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00 | Vagas: 30\n";
+    "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
+    "ID: 3 | Origem: Origem D | Destino: Destino A | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00 | Vagas: 30\n";
     private final String LISTA3 =
-            "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
-                    "ID: 3 | Origem: Origem A | Destino: Destino D | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00 | Vagas: 30\n";
+    "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
+    "ID: 3 | Origem: Origem A | Destino: Destino D | Data: 20/08/2023 | Horário: 14:00 | Preço: R$ 200,00 | Vagas: 30\n";
     private final String LISTA4 =
-            "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
-                    "ID: 1 | Origem: Origem B | Destino: Destino B | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
-                    "ID: 2 | Origem: Origem C | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
-                    "ID: 4 | Origem: Origem A | Destino: Destino E | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n";
+    "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
+    "ID: 1 | Origem: Origem B | Destino: Destino B | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
+    "ID: 2 | Origem: Origem C | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
+    "ID: 4 | Origem: Origem A | Destino: Destino E | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n";
     private final String LISTA5 =
-            "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
-                    "ID: 2 | Origem: Origem C | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n";
+    "ID: 0 | Origem: Origem A | Destino: Destino A | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n" +
+    "ID: 2 | Origem: Origem C | Destino: Destino C | Data: 20/08/2023 | Horário: 10:00 | Preço: R$ 200,00 | Vagas: 30\n";
 
 
     private VooRepository vooRepository;
@@ -37,7 +38,7 @@ public class VooRepositoryTeste {
         this.reserva = new Reserva();
     }
 
-    @After
+    @AfterEach
     public void destruir() {
         this.vooRepository = null;
     }

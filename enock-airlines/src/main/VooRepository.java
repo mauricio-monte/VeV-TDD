@@ -114,4 +114,12 @@ public class VooRepository {
 
         return lista;
     }
+
+    public String getStringVooPorPreco(double v) {
+        return "";
+    }
+
+    public String getStringVooPorHorario(String s, String s1) {
+        return "";
+    }
 }
